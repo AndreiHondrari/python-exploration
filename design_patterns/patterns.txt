@@ -1,0 +1,4 @@
+abstract factory
+composite pattern
+stategy pattern
+decorator pattern
