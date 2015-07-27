@@ -23,9 +23,6 @@ print "\ndecorator singleton definition"
 
 def decorateSingleton(originalClass):
 
-    # originalClass._instance = None
-    # originalClass._initialized = False
-
     class SingletonClass(originalClass):
 
         _instance = None
