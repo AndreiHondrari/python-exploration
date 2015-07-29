@@ -2,3 +2,4 @@ abstract factory
 singleton
 factory method
 builder
+factory
