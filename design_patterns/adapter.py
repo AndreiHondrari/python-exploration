@@ -56,3 +56,4 @@ print a.adaptee.y
 
 # TODO: make adapter inherited
 # TODO: make adapter-adaptee composition with __dict__ adaptation from adapter to adaptee
+# TODO: make adapter with aggregation
