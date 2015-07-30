@@ -3,3 +3,4 @@ singleton
 factory method
 builder
 factory
+prototype
