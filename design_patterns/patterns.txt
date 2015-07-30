@@ -5,3 +5,4 @@ builder
 factory
 prototype
 adapter
+bridge
