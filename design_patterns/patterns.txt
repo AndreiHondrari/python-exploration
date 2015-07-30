@@ -4,3 +4,4 @@ factory method
 builder
 factory
 prototype
+adapter
