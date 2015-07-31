@@ -6,3 +6,4 @@ factory
 prototype
 adapter
 bridge
+composite
