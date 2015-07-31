@@ -2,6 +2,8 @@
 
 from abc import ABCMeta, abstractmethod
 
+from utils import p
+
 
 class Implementor(object):
     __metaclass__ = ABCMeta
@@ -17,28 +19,46 @@ class ConcreteImplementor1(Implementor):
         p("CI1")
 
 
-class ConcreteImplementor1(Implementor):
+class ConcreteImplementor2(Implementor):
 
     def impOperation(self):
         p("CI2")
 
 
 class Abstraction(object):
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
+    def checkImp(self, imp):
+        pass
 
     def __init__(self, imp=None):
+        self.checkImp(imp)
         self.imp = imp
 
+    def operation(self):
+        self.imp.impOperation()
+
 
 class Specialization1(Abstraction):
-    pass
+    
+    def checkImp(self, imp):
+        assert(isinstance(imp, ConcreteImplementor1))
+
+class Specialization2(Abstraction):
+    
+    def checkImp(self, imp):
+        assert(isinstance(imp, ConcreteImplementor2))
 
 
-class Specialization1(Abstraction):
-    pass
+imp1 = ConcreteImplementor1()
+imp2 = ConcreteImplementor2()
 
+s1 = Specialization1(imp1)
+s2 = Specialization2(imp2)
 
-imp = Implementor()
+assert(id(s1.imp) == id(imp1))
+assert(id(s2.imp) == id(imp2))
 
-s = Specialization1(imp)
-
-assert(id(s.imp) == id(imp))
+s1.operation()
+s2.operation()
