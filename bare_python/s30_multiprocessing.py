@@ -11,7 +11,7 @@ class MyThread(threading.Thread):
         self.delay = delay
 
     def run(self):
-        for i in xrange(5):
+        for i in range(5):
             print(self.name + " " + str(i))
             time.sleep(self.delay)
 

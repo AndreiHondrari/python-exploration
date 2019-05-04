@@ -6,7 +6,7 @@ lst = []
 results = []
 
 if T >= 1 and T <= 10:
-    for i in xrange(T):
+    for i in range(T):
         lst.append(raw_input())
 
     lst = filter(lambda x: len(x) >= 1 and len(x) <= 10**5, lst)
@@ -14,7 +14,7 @@ if T >= 1 and T <= 10:
     for cst in lst:
         delct = 0
 
-        for j in xrange(len(cst)-1):
+        for j in range(len(cst)-1):
             if cst[j] == cst[j+1]:
                 delct += 1
 

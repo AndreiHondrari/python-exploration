@@ -11,7 +11,7 @@ def fib(n, lst=[0, 1]):
     return fib(n, lst)
 
 if T >= 1 & T <= 10**5:
-    for i in xrange(T):
+    for i in range(T):
         N.append(input())
 
     for n in N:

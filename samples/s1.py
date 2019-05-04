@@ -7,7 +7,7 @@ nlst = []
 cycles = {}
 
 if T >= 1 and T <= 10:
-    for i in xrange(T):
+    for i in range(T):
         nlst.append(input())
 
     for n in nlst:
@@ -15,7 +15,7 @@ if T >= 1 and T <= 10:
 
             primary_cycle = True
             cycles[n] = 1
-            for i in xrange(n):
+            for i in range(n):
 
                 if primary_cycle:
                     cycles[n] *= 2

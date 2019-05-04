@@ -4,7 +4,7 @@ lst = []
 results = []
 
 if T >= 1 and T <= 10**4:
-    for i in xrange(T):
+    for i in range(T):
         lst.append(raw_input())
 
 
@@ -18,14 +18,14 @@ if T >= 1 and T <= 10**4:
 
         limc = ord('a')
 
-        for i in xrange(hcstlen):
+        for i in range(hcstlen):
             c = ord(cst[i])
             cc = ord(cst[-i-1])
 
             minc = min(c, cc)
             maxc = max(c, cc)
 
-            for ct in xrange(maxc - minc):
+            for ct in range(maxc - minc):
                 opct += 1
 
         results.append(opct)

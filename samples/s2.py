@@ -1,4 +1,4 @@
-# 
+#!/usr/bin/python3
 
 T = input()
 
@@ -10,7 +10,7 @@ N_MIN = 0
 N_MAX = 60
 
 if T >= T_MIN and T <= T_MAX:
-    for i in xrange(T):
+    for i in range(T):
         nlst.append(input())
 
     for n in nlst:

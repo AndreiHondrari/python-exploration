@@ -47,7 +47,7 @@ print(t.substitute(ADJ="nice"))
 print(t.substitute(ADJ="extraodinary"))
 
 p("format differently types")
-for i in xrange(10):
+for i in range(10):
     print("{:0>8b}".format(i))
 
 print("{:.0%}".format(0.242))
