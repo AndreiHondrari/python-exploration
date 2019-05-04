@@ -1,13 +1,19 @@
 #!/usr/bin/python3
 
+from ut import p
+
+
 class A:
 
     def __str__(self):
-        return "ceva"
+        return "somestr"
 
     def __repr__(self):
-        return "oarece doctring"
+        return "somerepr"
 
 a = A()
+p("simple print")
 print(a)
+
+p("repr print")
 print(repr(a))

@@ -56,3 +56,5 @@ try:
         raise Exception("potato")
 except:
     print("potato exception raised")
+
+# TODO: explore nullcontext, ExitStack, suppress and other contextlib features.
