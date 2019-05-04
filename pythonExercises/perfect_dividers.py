@@ -27,6 +27,6 @@ if T >= 1 & T <= 15:
                     perfect_dividers[divided].append(divider)
 
     for n in lst:
-        print len(perfect_dividers[n])
+        print(len(perfect_dividers[n]))
                 
             

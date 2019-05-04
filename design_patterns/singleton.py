@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-print "\nspecific class singleton definition"
-class MySingleton(object):
+print("\nspecific class singleton definition")
+class MySingleton:
 
     _instance = None
 
@@ -12,14 +12,14 @@ class MySingleton(object):
         return cls._instance
 
     def __init__(self):
-        print "MySingleton.__init__ called"
+        print("MySingleton.__init__ called")
 
 ob1 = MySingleton()
 ob2 = MySingleton()
 
-print id(ob1), id(ob2)
+print(id(ob1), id(ob2))
 
-print "\ndecorator singleton definition"
+print("\ndecorator singleton definition")
 
 def decorateSingleton(originalClass):
 
@@ -35,9 +35,9 @@ def decorateSingleton(originalClass):
             return cls._instance
 
         def __init__(self):
-            print "SingletonClass.__init__ called"
+            print("SingletonClass.__init__ called")
             if not self._initialized:
-                print "SingletonClass initialization"
+                print("SingletonClass initialization")
                 super(SingletonClass, self).__init__()
 
                 self._initialized = True
@@ -45,10 +45,10 @@ def decorateSingleton(originalClass):
     return SingletonClass
 
 @decorateSingleton
-class A(object):
+class A:
 
     def __init__(self):
-        print "A.__init__ called"
+        print("A.__init__ called")
 
         self.x = 10
 
@@ -57,10 +57,10 @@ class A(object):
 
 ob3 = A()
 ob4 = A()
-print ob3, ob4
-print id(ob3), id(ob4)
+print(ob3, ob4)
+print(id(ob3), id(ob4))
 
-print "\nmetaclass singleton definition"
+print("\nmetaclass singleton definition")
 
 class MetaSingleton(type):
     _instances = {}
@@ -71,11 +71,11 @@ class MetaSingleton(type):
 
         return cls._instance
 
-class B(object):
+class B:
     __metaclass__ = MetaSingleton
 
     def __init__(self):
-        print "B.__init__ called"
+        print("B.__init__ called")
 
         self.x = 22
 
@@ -84,5 +84,5 @@ class B(object):
 
 ob5 = B()
 ob6 = B()
-print ob5, ob6
-print id(ob5), id(ob6)
+print(ob5, ob6)
+print(id(ob5), id(ob6))

@@ -15,4 +15,4 @@ if __name__ == '__main__':
     a = input()
     b = map(int, raw_input().strip().split(" "))
     if a == len(b) and a % 2 == 1:
-        print lonelyinteger(b)
+        print(lonelyinteger(b))

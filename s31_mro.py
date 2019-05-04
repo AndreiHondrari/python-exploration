@@ -1,25 +1,27 @@
-class A(object):
-	pass
+#!/usr/bin/python3
+
+class A:
+    pass
 
 class B(A):
-	pass
+    pass
 
 class C(A):
-	pass
+    pass
 
 class D(B, C):
-	pass
+    pass
 
 class E(B):
-	pass
+    pass
 
 class F(E):
-	pass
+    pass
 
 class G(F, E):
-	pass
+    pass
 
-print D.__mro__
-print F.__mro__
-print G.__mro__
+print(D.__mro__)
+print(F.__mro__)
+print(G.__mro__)
 

@@ -1,8 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-from utils import p 
+from utils import p
 
-class CompliantInstance(object):
+class CompliantInstance:
 
     def __init__(self):
         self.x = int()
@@ -13,7 +13,7 @@ class CompliantInstance(object):
         self.y = y
 
 
-class Adaptee(object):
+class Adaptee:
 
     def __init__(self):
         pass
@@ -25,7 +25,7 @@ class Adaptee(object):
         self.y = Y
 
 
-class AdapteeAdapter(object):
+class AdapteeAdapter:
 
     def __init__(self):
         self.adaptee = Adaptee()
@@ -35,7 +35,7 @@ class AdapteeAdapter(object):
         self.adaptee.doY(y)
 
 
-class Client(object):
+class Client:
 
     C_X = 33
     C_Y = 44
@@ -51,8 +51,8 @@ a = AdapteeAdapter()
 c = Client(a)
 c.doIt()
 
-print a.adaptee.x
-print a.adaptee.y
+print(a.adaptee.x)
+print(a.adaptee.y)
 
 # TODO: make adapter inherited
 # TODO: make adapter-adaptee composition with __dict__ adaptation from adapter to adaptee

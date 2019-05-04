@@ -1,2 +1,2 @@
 def p(m):
-	print "\n###", str(m)
+    print("\n###", str(m))

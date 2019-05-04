@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 from abc import ABCMeta, abstractmethod
 
 
-class AbstractItem(object):
+class AbstractItem:
     pass
 
     def __str__(self):
@@ -30,7 +30,7 @@ class ConcreteItemC(AbstractItem2):
     pass
 
 
-class AbstractBuilder(object):
+class AbstractBuilder:
     __metaclass__ = ABCMeta
 
     items = []
@@ -73,7 +73,7 @@ class ConcreteBuilder2(AbstractBuilder):
         self.items = []
         self.items.append(ConcreteItemC())
 
-class Director(object):
+class Director:
 
     def __init__(self, builder):
         self.mix1 = None
@@ -104,24 +104,24 @@ cmix2 = [ConcreteItemB, ConcreteItemC]
 cmix3 = [ConcreteItemA, ConcreteItemC]
 cmix4 = [ConcreteItemC]
 
-print '\nD1 MIX 1'
+print('\nD1 MIX 1')
 for i in d1.mix1:
-    print i
+    print(i)
     assert(i.__class__ in cmix1)
 
-print '\nD1 MIX 2'
+print('\nD1 MIX 2')
 for i in d1.mix2:
-    print i
+    print(i)
     assert(i.__class__ in cmix2)
 
-print '\nD2 MIX 1'
+print('\nD2 MIX 1')
 for i in d2.mix1:
-    print i
+    print(i)
     assert(i.__class__ in cmix3)
 
-print '\nD2 MIX 2'
+print('\nD2 MIX 2')
 for i in d2.mix2:
-    print i
+    print(i)
     assert(i.__class__ in cmix4)
 
-print "\nBUILDER TESTED"
+print("\nBUILDER TESTED")

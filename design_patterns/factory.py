@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import inspect
 
 
-class SampleBase(object):
+class SampleBase:
 
     def __init__(self, x=None):
         self.x = x
@@ -34,7 +34,7 @@ TYPE_1 = 1
 TYPE_2 = 2
 TYPE_3 = 3
 
-class MyFactory(object):
+class MyFactory:
 
     def factory(self, fType):
 
@@ -49,11 +49,11 @@ class MyFactory(object):
         elif fType == TYPE_3:
             return Sample3()
 
-print "\nTEST CONCRETE FACTORY WITH FIXED TYPES"
+print("\nTEST CONCRETE FACTORY WITH FIXED TYPES")
 myf = MyFactory()
-print isinstance(myf.factory(TYPE_1), Sample1)
-print isinstance(myf.factory(TYPE_2), Sample2)
-print isinstance(myf.factory(TYPE_3), Sample3)
+print(isinstance(myf.factory(TYPE_1), Sample1))
+print(isinstance(myf.factory(TYPE_2), Sample2))
+print(isinstance(myf.factory(TYPE_3), Sample3))
 
 # Concrete factory with dynamic types
 
@@ -61,7 +61,7 @@ class FactoryTypeAlreadyRegistered(Exception):
     pass
 
 
-class MyFactory2(object):
+class MyFactory2:
 
     def __init__(self):
         self.factoryTypes = {}
@@ -86,7 +86,7 @@ class MyFactory2(object):
         return fClass(*args, **kwargs)
 
 
-print "\nTEST CONCRETE FACTORY WITH DYNAMIC TYPES"
+print("\nTEST CONCRETE FACTORY WITH DYNAMIC TYPES")
 myf2 = MyFactory2()
 myf2.registerType(4, Sample4)
 myf2.registerType(5, Sample5)
@@ -94,7 +94,7 @@ myf2.registerType(5, Sample5)
 s1 = myf2.factory(4, x=44)
 s2 = myf2.factory(5, x=55)
 
-print isinstance(s1, Sample4)
-print isinstance(s2, Sample5)
-print s1.x
-print s2.x
+print(isinstance(s1, Sample4))
+print(isinstance(s2, Sample5))
+print(s1.x)
+print(s2.x)

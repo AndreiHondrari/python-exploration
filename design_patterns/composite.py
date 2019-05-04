@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import functools
 from abc import ABCMeta, abstractmethod
@@ -6,74 +6,74 @@ from abc import ABCMeta, abstractmethod
 from utils import p
 
 
-class AddComponent(object):
+class AddComponent:
 
-	def __call__(self, component, this):
-		assert(isinstance(component, Component))
-		assert(isinstance(this, Component))
+    def __call__(self, component, this):
+        assert(isinstance(component, Component))
+        assert(isinstance(this, Component))
 
-		this._components[id(component)] = component
-
-
-class RemoveComponent(object):
-
-	def __call__(self, component, this):
-		assert(isinstance(component, Component))
-		assert(isinstance(this, Component))
-
-		this._components.pop(id(component))
+        this._components[id(component)] = component
 
 
-class GetChild(object):
+class RemoveComponent:
 
-	def __call__(self, n, this):
-		assert(isinstance(n, int))
-		assert(isinstance(this, Component))
+    def __call__(self, component, this):
+        assert(isinstance(component, Component))
+        assert(isinstance(this, Component))
 
-		assert(len(this.components.values()) > n)
-
-		this._components.values()[n]
+        this._components.pop(id(component))
 
 
-class Component(object):
-	__metaclass__ = ABCMeta
+class GetChild:
 
-	def __init__(self):
+    def __call__(self, n, this):
+        assert(isinstance(n, int))
+        assert(isinstance(this, Component))
 
-		if not hasattr(self, '_composite'):
-			return
+        assert(len(this.components.values()) > n)
 
-		assert(isinstance(self._composite, bool))
+        this._components.values()[n]
 
-		if not self._composite:
-			return
 
-		self._components = {}
-		self.addComponent = AddComponent()
-		self.addComponent = functools.partial(self.addComponent, this=self)
+class Component:
+    __metaclass__ = ABCMeta
 
-		self.removeComponent = RemoveComponent()
-		self.removeComponent = functools.partial(self.removeComponent, this=self)
+    def __init__(self):
 
-		self.getChild = GetChild()
-		self.getChild = functools.partial(self.getChild, this=self)
+        if not hasattr(self, '_composite'):
+            return
 
-	@abstractmethod
-	def operation(self):
-		pass
+        assert(isinstance(self._composite, bool))
+
+        if not self._composite:
+            return
+
+        self._components = {}
+        self.addComponent = AddComponent()
+        self.addComponent = functools.partial(self.addComponent, this=self)
+
+        self.removeComponent = RemoveComponent()
+        self.removeComponent = functools.partial(self.removeComponent, this=self)
+
+        self.getChild = GetChild()
+        self.getChild = functools.partial(self.getChild, this=self)
+
+    @abstractmethod
+    def operation(self):
+        pass
 
 
 class Leaf(Component):
 
-	def operation(self):
-		p("LEAF OPERATION")
+    def operation(self):
+        p("LEAF OPERATION")
 
 
 class Composite(Component):
-	_composite = True
+    _composite = True
 
-	def operation(self):
-		p("COMPOSITE OPERATION")
+    def operation(self):
+        p("COMPOSITE OPERATION")
 
 # LEAFS
 p("CREATING LEAVES")
@@ -90,8 +90,8 @@ assert(not hasattr(l1, '_components'))
 p("CREATING COMPOSITES")
 pc = Composite()
 c = Composite()
-print pc
-print c
+print(pc)
+print(c)
 
 assert(callable(pc.addComponent))
 assert(callable(pc.removeComponent))
@@ -101,9 +101,9 @@ assert(isinstance(pc._components, dict))
 p("PARENT COMPOSITE INITIALIZATION")
 pc.addComponent(l1)
 pc.addComponent(c)
-print pc._components
+print(pc._components)
 
 p("SECONDARY COMPOSITE INITIALIZATION")
 c.addComponent(l2)
 c.addComponent(l3)
-print c._components
+print(c._components)

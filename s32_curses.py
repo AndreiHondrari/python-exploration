@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import curses
 import traceback
 
@@ -11,27 +13,27 @@ def main(stdscr):
     screen.refresh()
 
     while True:
-    	pass
+        pass
 
 scr = curses.initscr()
 try:
-	# start curses app
-	curses.noecho()
-	curses.cbreak()
-	scr.keypad(1)
+    # start curses app
+    curses.noecho()
+    curses.cbreak()
+    scr.keypad(1)
 
-	main(scr)
+    main(scr)
 
-	# close curses app
-	scr.keypad(0)
-	curses.nocbreak()
-	curses.echo()
-	curses.endwin()
+    # close curses app
+    scr.keypad(0)
+    curses.nocbreak()
+    curses.echo()
+    curses.endwin()
 
 except:
-	# close curses app
-	scr.keypad(0)
-	curses.nocbreak()
-	curses.echo()
-	curses.endwin()
-	print traceback.print_exc()
+    # close curses app
+    scr.keypad(0)
+    curses.nocbreak()
+    curses.echo()
+    curses.endwin()
+    print(traceback.print_exc())

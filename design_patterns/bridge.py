@@ -1,11 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 from abc import ABCMeta, abstractmethod
 
 from utils import p
 
 
-class Implementor(object):
+class Implementor:
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -25,7 +25,7 @@ class ConcreteImplementor2(Implementor):
         p("CI2")
 
 
-class Abstraction(object):
+class Abstraction:
     __metaclass__ = ABCMeta
 
     @abstractmethod

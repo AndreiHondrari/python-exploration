@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 
-class Sample1(object):
+class Sample1:
     pass
 
-class Sample2(object):
+class Sample2:
     pass
 
 class AbstractCreator():
@@ -29,5 +29,5 @@ class ConcreteCreator2(AbstractCreator):
 c1 = ConcreteCreator1()
 c2 = ConcreteCreator2()
 
-print isinstance(c1.sample, Sample1)
-print isinstance(c2.sample, Sample2)
+print(isinstance(c1.sample, Sample1))
+print(isinstance(c2.sample, Sample2))

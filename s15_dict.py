@@ -1,22 +1,38 @@
+#!/usr/bin/python3
+
+from ut import p
+
 class A:
+    y = 33
 
-	a = 10
-	b = 22
+    def __init__(self):
+        self.x = 11
 
-	def __init__(self):
-		self.x = 55
-
-	def ceva(self):
-		print "CEVA A", self.a
-		print "CEVA DICT", self.__dict__
+    def show(self):
+        print("self.y", self.x)
+        print("__dict__", self.__dict__)
 
 a = A()
 
-print "CLS DICT", A.__dict__
-print "INST DICT", a.__dict__
+p("__dict__")
+print("class A.__dict__", A.__dict__)
+print("instance a.__dict__", a.__dict__)
 
-a.ceva()
-import ipdb; ipdb.set_trace()
-print "INST prop b", a.__dict__['b']
+p("show")
+a.show()
 
-print "VARS", vars(a)
+p("vars of instance")
+print("vars", vars(a))
+
+p("vars of class")
+print("vars", vars(A))
+
+p("key in __dict__")
+print("a.__dict__['x']", a.__dict__['x'])
+
+try:
+    print("a.__dict__['y']", a.__dict__['y'])
+except KeyError:
+    # this is the reason why you need to initialize instance attributes in __init__ !
+    print("a.__dict__['y'] raises keyError because 'a' is not an instance attribute, rather a class attribute")
+

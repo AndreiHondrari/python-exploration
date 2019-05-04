@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-class Base1(object):
+class Base1:
     pass
 
 class A1(Base1):
@@ -9,7 +9,7 @@ class A1(Base1):
 class B1(Base1):
     pass
 
-class Base2(object):
+class Base2:
     pass
 
 class A2(Base2):
@@ -18,7 +18,7 @@ class A2(Base2):
 class B2(Base2):
     pass
 
-class AbstractFactory(object):
+class AbstractFactory:
 
     def newB1(self):
         raise NotImplemented()
@@ -43,7 +43,7 @@ class Base2Factory(AbstractFactory):
         return B2()
 
 
-class FactoryUser(object):
+class FactoryUser:
     
     def __init__(self, factory):
         self.factory = factory
@@ -63,7 +63,7 @@ user2 = FactoryUser(factory2)
 user1.populate()
 user2.populate()
 
-print isinstance(user1.a, A1)
-print isinstance(user1.b, B1)
-print isinstance(user2.a, A2)
-print isinstance(user2.b, B2)
+print(isinstance(user1.a, A1))
+print(isinstance(user1.b, B1))
+print(isinstance(user2.a, A2))
+print(isinstance(user2.b, B2))

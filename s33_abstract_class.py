@@ -1,11 +1,11 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # abstract class
 
 from abc import ABCMeta, abstractmethod
 
-class AbstractBase(object):
-    
+class AbstractBase:
+
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -15,5 +15,5 @@ class AbstractBase(object):
 
 class A(AbstractBase):
     pass
-    
+
 ob1 = A()
