@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+from ut import p
+
 class A:
 
     a = 10
@@ -7,6 +9,7 @@ class A:
     def __call__(self, x):
         return x + self.a
 
-Aclb = A()
+a_callable = A()
 
-print(Aclb(3))
+p("callable resulting from instantiating")
+print(a_callable(3))
