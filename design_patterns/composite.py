@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 import functools
 from abc import ABCMeta, abstractmethod

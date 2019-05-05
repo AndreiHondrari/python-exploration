@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 a = (x for x in range(3))
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 from contextlib import AbstractContextManager as ACM
 

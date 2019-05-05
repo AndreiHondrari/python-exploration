@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 class Base1:
     pass

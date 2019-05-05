@@ -1,3 +1,3 @@
-#!/usr/bin/python3
+#!python
 
 from math import *

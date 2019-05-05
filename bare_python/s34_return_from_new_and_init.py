@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 print("\nreturn something specific from __new__ in new-style")
 class A:

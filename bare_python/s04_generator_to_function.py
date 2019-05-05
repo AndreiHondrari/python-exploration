@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 def myf(chestii):
     for x in chestii:

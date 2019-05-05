@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 def f():
     lv = 11

@@ -1,14 +1,13 @@
-#!/usr/bin/python3
+#!python
 
 from ut import p
-from functools import *
+import functools
 
 p("partial")
-
 def myf(x, y):
     print(x+y)
 
-myfp = partial(myf, y=3)
+myfp = functools.partial(myf, y=3)
 myfp(10)
 
 
@@ -19,7 +18,6 @@ def dec1(f):
 
     return wrapper
 
-print("\n")
 p("update_wrapper")
 
 def dec2(f):
@@ -27,7 +25,7 @@ def dec2(f):
     def wrapper():
         f()
 
-    wrapper = update_wrapper(wrapper, f)
+    wrapper = functools.update_wrapper(wrapper, f)
     return wrapper
 
 def somef2():
@@ -45,12 +43,11 @@ wrapped_somef2_2 = dec2(somef2)
 print("NAME 3", wrapped_somef2_2.__name__)
 print("DOC 3", wrapped_somef2_2.__doc__)
 
-print("\n")
 p("wraps")
 
 def dec3(f):
 
-    @wraps(f)
+    @functools.wraps(f)
     def wrapper():
         f()
 

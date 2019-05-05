@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!python
 
 from abc import ABCMeta, abstractmethod
 
