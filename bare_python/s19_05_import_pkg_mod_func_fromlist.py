@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-import sys
-
 from ut import p
 
 p("from pack1 import pmod1")
