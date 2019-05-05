@@ -103,7 +103,7 @@ lst = {'z':222, 'x':555, 'y':333}
 clb = itemgetter('z')
 print(clb(lst))
 clb = itemgetter(2)
-print(clb(lst.values()))
+print(clb(list(lst.values())))
 
 p("methodcaller")
 
@@ -114,7 +114,8 @@ class A:
         print("MYF", x, kwargs)
 
 a = A()
+# this is different from a partial in the sense that 
+# you call on different instances and
+# you call by function name (as a string -> kind of metaprogramming)
 clb = methodcaller('myf', 10, some=333)
 clb(a)
-
-p("")
