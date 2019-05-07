@@ -2,18 +2,61 @@
 
 # abstract class
 
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta, abstractmethod, ABC
 
-class AbstractBase:
+from ut import p
 
-    __metaclass__ = ABCMeta
+
+class AbstractBase(metaclass=ABCMeta):
+
+    # __metaclass__ = ABCMeta  # --> no longer available in Python 3.x
+    # -> must be defined as (metaclass=ABCMeta) in the inheritance section
 
     @abstractmethod
     def __init__(self):
         pass
 
+    @abstractmethod
+    def some(self):
+        print("something")
+
+# replacement for using metaclass=ABCMeta
+# --> it already specified it internally
+class AbstractBaseSecondary(ABC):
+
+    @abstractmethod
+    def some2(self):
+        print("something")
+
 
 class A(AbstractBase):
     pass
 
-ob1 = A()
+class B(AbstractBase):
+
+    def __init__(self):
+        pass  # implement the abstractmethod AbstractBase.__init__
+
+class C(AbstractBaseSecondary):
+    pass
+
+
+p("attempt instantiating with abstract AbstractBase.__init__ ...")
+try:
+    ob1 = A()
+except TypeError as e:
+    print(f"raised: {repr(e)}")
+
+
+p("attempt instantiating with abstract AbstractBase.some ...")
+try:
+    ob2 = B()
+except TypeError as e:
+    print(f"raised: {repr(e)}")
+
+p("attempt instantiating ABC decendant with abstract AbstractBaseSecondary.some2 ...")
+try:
+    ob3 = C()
+except TypeError as e:
+    print(f"raised: {repr(e)}")
+
