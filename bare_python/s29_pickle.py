@@ -9,14 +9,15 @@ class A:
         self.a = 20
         self.b = 30
 
-    # def __str__(self):
-    #     return "zafuk"
+    def __repr__(self):
+        return f"A(a={self.a}, b={self.b})"
 
-p("DUMPS")
+p("pickle and restore an instance")
 a = A()
+print(f"our instance: {repr(a)}")
 pa = dumps(a)
-a2 = loads(pa)
+print(f"pa = dumps(a) --> {pa}")
 
-print(a2.a)
-print(a2.b)
+a2 = loads(pa)
+print(f"loads(pa) --> {a2}")
 
