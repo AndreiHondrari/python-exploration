@@ -8,7 +8,7 @@ class A:
 
 
 a = A()
-a.lst = [1,2,3]
+a.lst = [1, 2, 3]
 a.st = "zzzz"
 
 b = copy.copy(a)
