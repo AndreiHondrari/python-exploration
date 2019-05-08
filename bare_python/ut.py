@@ -1,2 +1,4 @@
-def p(m):
+
+
+def p(m: str) -> None:
     print("\n###", str(m))
