@@ -1,4 +1,5 @@
+from typing import Any
 
 
-def p(m: str) -> None:
-    print("\n###", str(m))
+def p(m: Any) -> None:
+    print("\n###", str(m))  # noqa
