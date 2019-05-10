@@ -1,11 +1,12 @@
 #!python
 
+from typing import Any
+
 
 class A:
-
     z = 555
 
-    def __setattr__(self, name, value):
+    def __setattr__(self, name: str, value: Any) -> None:
         print(name, value)
         self.__dict__['z'] = value
 

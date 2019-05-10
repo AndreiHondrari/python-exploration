@@ -5,11 +5,11 @@ from ut import p
 
 class MyIter:
 
-    def __init__(self, limit):
+    def __init__(self, limit: int) -> None:
         self.x = 10
         self.limit = limit or 0
 
-    def __next__(self):
+    def __next__(self) -> int:
         tx = self.x
 
         if tx > self.limit:
@@ -19,8 +19,9 @@ class MyIter:
 
         return tx
 
-    def __iter__(self):  # -> makes this class an iterator class
+    def __iter__(self) -> "MyIter":  # -> makes this class an iterator class
         return self
+
 
 a = MyIter(200)
 

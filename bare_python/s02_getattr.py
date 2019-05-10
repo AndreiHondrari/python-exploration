@@ -1,16 +1,19 @@
 #!python
 
+from typing import Tuple, Any
 from ut import p
 
 p("A")
+
+
 class A:
 
     x = 555
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Tuple[int, str]:
         return 100, name
 
-    def __getattribute__(self, name):
+    def __getattribute__(self, name: str) -> Tuple[int, str]:
         return 222, name
 
 
@@ -20,29 +23,34 @@ print(a.x)
 print(a.y)
 
 p("B")
+
+
 class B:
 
     x = 555
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Tuple[int, str]:
         return 100, name
 
-    def __getattribute__(self, name):
+    def __getattribute__(self, name: str) -> Tuple[int, str]:
         raise AttributeError()
         return 333
 
 
 b = B()
-# __getattr__ is always called because __getattribute__ is called first and raises an AttributeError
+# __getattr__ is always called because __getattribute__ is called first and
+# raises an AttributeError
 print(b.x)
 print(b.y)
 
 p("C")
+
+
 class C:
 
     x = 555
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Tuple[int, str]:
         return 100, name
 
 
@@ -51,12 +59,16 @@ print(c.x)  # -> it is found so the actual value is returned
 print(c.y)  # -> it is not found so __getattr__ is called
 
 p("D")
+
+
 class D:
 
     x = 555
 
-    def __getattr__(self, name):
-        return self.z  # --> causes this __getattr__ to be called again because z does not exist in this instance
+    def __getattr__(self, name: str) -> Any:
+        return self.z
+        # --> causes this __getattr__ to be called again because
+        # z does not exist in this instance
         # hence infinite recursion occurs
 
 
@@ -66,11 +78,12 @@ p("d.y hidden --> raises exception")
 # print(d.y)  # -> this triggers the initial __getattr__ call
 
 p("E")
-class E:
 
+
+class E:
     x = 555
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         return self.__dict__[name]
 
 

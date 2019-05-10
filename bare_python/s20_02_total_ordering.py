@@ -6,9 +6,11 @@ from functools import total_ordering
 
 
 p("define A")
+
+
 class A:
 
-    def __init__(self, x):
+    def __init__(self, x: int) -> None:
         self.x = x or 0
         print(f"A({x})")
 
@@ -18,7 +20,7 @@ try:
     @total_ordering
     class B:
 
-        def __init__(self, x):
+        def __init__(self, x: int) -> None:
             self.x = x or 0
             print(f"B({x})")
 
@@ -27,16 +29,19 @@ except ValueError as e:
 
 
 p("define C")
+
+
 @total_ordering
 class C:
 
-    def __init__(self, x):
+    def __init__(self, x: int):
         self.x = x or 0
         print(f"C({x})")
 
-    def __lt__(self, other):
+    def __lt__(self, other: "C") -> bool:
         print("LT")
         return self.x < other.x
+
 
 p("instantiate")
 a1 = A(10)
@@ -50,7 +55,7 @@ c2 = C(99)
 
 p("a1 < a2")
 try:
-    print(a1 < a2)
+    print(a1 < a2)  # type: ignore
 except TypeError as e:
     print(f"raised: {e} --> because @total_ordering is not applied on A")
 
@@ -61,10 +66,10 @@ p("c1 == c2")
 print(c1 == c2)
 
 p("c1 <= c2")
-print(c1 <= c2)
+print(c1 <= c2)  # type: ignore
 
 p("c1 >= c2")
-print(c1 >= c2)
+print(c1 >= c2)  # type: ignore
 
 p("c1 < c2")
 print(c1 < c2)
@@ -73,6 +78,7 @@ p("c1 > c2")
 print(c1 > c2)
 
 p(
-    """obviously that LT is called everytime because the one operation we defined 
-    plus the default __eq__ will be used to interpolate the rest of the operations"""
+    """obviously that LT is called everytime because the one operation we
+    defined plus the default __eq__ will be used to interpolate
+    the rest of the operations"""
 )

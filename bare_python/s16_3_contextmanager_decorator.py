@@ -1,15 +1,17 @@
 #!python
 
+from typing import Iterator, Any
 from contextlib import contextmanager
 
 from ut import p
 
 
 @contextmanager
-def some_manager(*args, **kwargs):
+def some_manager(*args: Any, **kwargs: Any) -> Iterator[int]:
     print("acquire resource -> equivalent of __enter__")
-    yield 10  # this is the magic that returns the resource to the context handler
+    yield 10  # magic that returns the resource to the context handler
     print("release resource -> equivalent of __exit__")
+
 
 p("cm without exit")
 with some_manager() as x:
@@ -20,41 +22,45 @@ p("cm without exit and raised exception")
 try:
     with some_manager():
         raise Exception("potato")
-except:
+except Exception as e:
     print("potato exception raised")
 
 
 # full working example
 class Resource:
 
-    def __init__
+    def do_release(self) -> None:
+        print("actual releasing resource")
 
-def acquire_resource():
-    return None
 
-def release_resource(resource):
-    pass
+def acquire_resource() -> Resource:
+    return Resource()
+
+
+def release_resource(resource: Any) -> None:
+    resource.do_release()
 
 
 @contextmanager
-def manage_resource(*args, **kwargs):
+def manage_resource(*args: Any, **kwargs: Any) -> Iterator[Any]:
     try:
         print("acquiring resource...")
         resource = acquire_resource()
-        yield resource  # this is the magic that returns the resource to the context handler
+        yield resource  # magic that returns a resource to the context handler
     finally:
         print("releasing resource...")
         release_resource(resource)
 
+
 p("full working contextmanager example without exception")
-with some_manager():
-    raise Exception("potato")
+with manage_resource():
+    print("potato without exception")
 
 p("full working contextmanager example WITH exception")
 try:
-    with some_manager():
+    with manage_resource():
         raise Exception("potato")
-except:
+except Exception:
     print("potato exception raised")
 
 # TODO: explore nullcontext, ExitStack, suppress and other contextlib features.

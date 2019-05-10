@@ -1,16 +1,18 @@
 #!python
 
+from typing import Any, Callable
 
-def myClassDecorator(OriginalClass):
 
-    class WrapperClass(OriginalClass):
+def myClassDecorator(OriginalClass: Any) -> Any:
 
-        def __init__(self):
+    class WrapperClass(OriginalClass):  # type: ignore
+
+        def __init__(self) -> None:
             print("PRE INIT")
             OriginalClass.__init__(self)
             print("POST INIT")
 
-        def ceva(self):
+        def ceva(self) -> None:
             print("PRE ceva")
             OriginalClass.ceva(self)
             print("POST ceva")
@@ -21,11 +23,12 @@ def myClassDecorator(OriginalClass):
 @myClassDecorator
 class MyClass:
 
-    def __init__(self):
+    def __init__(self) -> None:
         print("MCLASS INIT")
 
-    def ceva(self):
+    def ceva(self) -> None:
         print("MCLASS CEVA")
+
 
 a = MyClass()
 
@@ -33,9 +36,10 @@ a.ceva()
 
 print("### method decorator")
 
-def mdec(m):
 
-    def wrapper(self):
+def mdec(m: Callable[..., Any]) -> Callable[..., Any]:
+
+    def wrapper(self: Any) -> None:
         print("PRE M")
         m(self)
         print("POST M")
@@ -46,8 +50,9 @@ def mdec(m):
 class A:
 
     @mdec
-    def am(self):
+    def am(self) -> None:
         print("AM")
+
 
 oba = A()
 oba.am()

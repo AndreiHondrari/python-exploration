@@ -1,11 +1,15 @@
 #!python
 
 import itertools
+from typing import Iterable, Any, List
+
 from ut import p
 
-def take(n, iterable):
+
+def take(n: int, iterable: Iterable[Any]) -> List[Iterable[Any]]:
     "Return first n items of the iterable as a list"
     return list(itertools.islice(iterable, n))
+
 
 p("TAKE 1")
 print(take(5, (x for x in [1, 2, 3])))

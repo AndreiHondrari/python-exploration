@@ -1,12 +1,16 @@
 #!python
 
+from typing import Tuple
+
 from ut import p
 
-def f():
-    return 1,2,3
+
+def f() -> Tuple[int, int, int]:
+    return 1, 2, 3
+
 
 p("unpack to tuple of vars")
-(a,b,c) = f()
+(a, b, c) = f()
 
 print(a)
 print(b)
@@ -23,6 +27,6 @@ print(y)
 print(y)
 
 try:
-    x, y = f()
+    x, y = f()  # type: ignore
 except ValueError:
     print("ValueError raised")

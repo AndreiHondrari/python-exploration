@@ -4,7 +4,8 @@ from ut import p
 
 p("import pack1 --> but only pmod2 is available from it")
 
-pkg = __import__("pack1", fromlist=('pmod2',))  # equivalent 'import pack1 --> but you have access only to pmod1'
+# equivalent 'import pack1 --> but you have access only to pmod1'
+pkg = __import__("pack1", fromlist=['pmod2'])
 print("pkg", pkg)
 
 try:

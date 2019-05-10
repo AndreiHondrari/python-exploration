@@ -5,11 +5,12 @@ from ut import p
 
 class A:
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "somestr"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "somerepr"
+
 
 a = A()
 p("simple print")

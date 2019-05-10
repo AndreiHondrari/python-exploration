@@ -1,15 +1,21 @@
 #!python
 
+from typing import Type, Any
 from ut import p
 
 
 class A:
 
-    def __enter__(self):
+    def __enter__(self) -> None:
         print("ENTER")
 
     # (exc_type, exc_value, traceback)
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(
+        self,
+        exc_type: Type[Exception],
+        exc_value: str,
+        traceback: Any
+    ) -> None:
         print("EXIT exc_type", exc_type)
         print("EXIT exc_value", exc_value)
         print("EXIT traceback", traceback)
@@ -28,13 +34,15 @@ except Exception:
 
 p("return something random")
 
+
 class B:
 
-    def __enter__(self):
+    def __enter__(self) -> int:
         return 123
 
-    def __exit__(self, *args):
+    def __exit__(self, *args: Any) -> None:
         pass
+
 
 with B() as x:
     print(x)

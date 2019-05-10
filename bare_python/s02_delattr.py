@@ -3,7 +3,7 @@
 
 class A:
 
-    def __delattr__(self, name):
+    def __delattr__(self, name: str) -> None:
         print("DEL", name)
 
 
