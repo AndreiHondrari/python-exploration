@@ -1,5 +1,5 @@
 
-from manager import DBManager, Field, FieldType
+from manager import DBManager, Field, FieldType, SqliteConnectionException
 
 
 if __name__ == '__main__':
@@ -7,6 +7,12 @@ if __name__ == '__main__':
 
     dbm.register_db("db1", "db1.sqlite3")
     dbm.register_db("db2", "db2.sqlite3")
+
+    # use before selectng to determine exception
+    try:
+        dbm.insert("tablex", {})
+    except SqliteConnectionException as e:
+        print(f"raised: {e}")
 
     print("selecting db1 ...")
     dbm.select_db("db1")
