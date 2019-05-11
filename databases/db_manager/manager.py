@@ -57,7 +57,23 @@ class DBManager:
             f"CREATE TABLE IF NOT EXISTS {table_name} ({fields_query_atom})"
         )
 
-    def insert(self, table_name: str, fieldname: str, value: Any) -> None:
+    def drop_table(self, table_name: str) -> None:
+        self._execute(f"DROP TABLE {table_name}")
+
+    def insert(self, table_name: str, values: Dict[str, Any]) -> None:
+        fieldnames: Any = []
+        fieldvalues: Any = []
+
+        for key, val in values.items():
+            fieldnames.append(key)
+            fieldvalues.append(f"'{str(val)}'")
+
+        fieldnames = ", ".join(fieldnames)
+        fieldvalues = ", ".join(fieldvalues)
+
         self._execute(
-            f"INSERT INTO {table_name} ({fieldname}) VALUES ({value})"
+            f"INSERT INTO {table_name} ({fieldnames}) VALUES ({fieldvalues})"
         )
+
+    def delete_all(self, table_name: str) -> None:
+        self._execute(f"DELETE FROM {table_name}")
