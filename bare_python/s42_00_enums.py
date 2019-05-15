@@ -15,11 +15,21 @@ class Color(enum.Enum):
     BLUE = 4
 
 
+p("get enum by value")
+
+c1 = Color(3)
+print(f"c1.name == 'GREEN': {c1.name == 'GREEN'}")
+print(f"c1 == Color.GREEN: {c1 == Color.GREEN}")
+
+
 def colorize(color: Color) -> None:
     print(f"colorized with: {color.name}")
 
 
+p("colorize")
 colorize(Color.RED)
+
+p("color comparisons")
 print(f"Color.RED == Color.BLUE {Color.RED == Color.BLUE}")
 print(f"Color.RED == Color.RED {Color.RED == Color.RED}")
 
