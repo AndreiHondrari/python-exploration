@@ -12,13 +12,13 @@ def get_multiples(lim: int, references: List[int]) -> List[int]:
     multiples = []
 
     for n in range(lim):
-        for m_reference in references:
-            if n % m_reference == 0:
-                multiples.append(n)
+        if any([n % m_reference == 0 for m_reference in references]):
+            multiples.append(n)
 
-    return set(multiples)
+    return multiples
 
 
 multiples = get_multiples(lim=1000, references=[3, 5])
-print(multiples)
+
+# 233168 is correct for lim=1000
 print(sum(multiples))
