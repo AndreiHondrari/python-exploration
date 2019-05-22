@@ -7,6 +7,8 @@ What is the largest prime factor of the number 600851475143 ?
 from typing import Set
 from itertools import count
 
+from ut import p
+
 
 def prime_factors(n: int) -> Set[int]:
     factors = []
@@ -35,7 +37,13 @@ def prime_factors(n: int) -> Set[int]:
     return set(factors)
 
 
-factors = sorted(prime_factors(13195))
-factors = sorted(prime_factors(600851475143))
-print(factors)
-print(max(factors))
+def show_it(n: int) -> None:
+    factors = sorted(prime_factors(n))
+    print(f"{n} -> {factors} | {max(factors)}")
+
+
+p("Prime factors")
+
+show_it(8)
+show_it(13195)
+show_it(600851475143)
