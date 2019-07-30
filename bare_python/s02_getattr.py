@@ -93,3 +93,19 @@ try:
     print(e.y)
 except Exception as e:
     print("e.y raises {}".format(str(e.__repr__())))
+
+p("F")
+
+
+class F:
+
+    def __init__(self):
+        self.x = 10
+
+    def __getattr__(self, name: str) -> Any:
+        return f"{name} not found"
+
+
+f = F()
+print(f.x)
+print(f.y)
