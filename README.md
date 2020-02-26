@@ -10,7 +10,7 @@ This repository contains code samples that have the purpose of exploring the fol
 - multithreading concepts
 - various algorithms
 
-### Head contributor
+### Head contributor 
 ---
 
 **Andrei-George Hondrari**  
