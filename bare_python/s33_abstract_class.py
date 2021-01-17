@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 # abstract class
 
@@ -9,9 +9,6 @@ from ut import p
 
 class AbstractBase(metaclass=ABCMeta):
 
-    # __metaclass__ = ABCMeta  # --> no longer available in Python 3.x
-    # -> must be defined as (metaclass=ABCMeta) in the inheritance section
-
     @abstractmethod
     def __init__(self):
         pass
@@ -19,6 +16,7 @@ class AbstractBase(metaclass=ABCMeta):
     @abstractmethod
     def some(self):
         print("something")
+
 
 # replacement for using metaclass=ABCMeta
 # --> it already specified it internally
@@ -32,10 +30,12 @@ class AbstractBaseSecondary(ABC):
 class A(AbstractBase):
     pass
 
+
 class B(AbstractBase):
 
     def __init__(self):
         pass  # implement the abstractmethod AbstractBase.__init__
+
 
 class C(AbstractBaseSecondary):
     pass
@@ -54,9 +54,10 @@ try:
 except TypeError as e:
     print(f"raised: {repr(e)}")
 
-p("attempt instantiating ABC decendant with abstract AbstractBaseSecondary.some2 ...")
+
+p("attempt instantiating ABC decendant with abstract "
+  "AbstractBaseSecondary.some2 ...")
 try:
     ob3 = C()
 except TypeError as e:
     print(f"raised: {repr(e)}")
-

@@ -1,4 +1,4 @@
-#!python
+#!python3
 import copy
 from decimal import Decimal, getcontext, setcontext
 

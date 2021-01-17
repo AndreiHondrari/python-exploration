@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 import itertools
 from typing import Iterable, Any, List

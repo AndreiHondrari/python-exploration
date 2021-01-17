@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 from typing import Type, Any
 from ut import p

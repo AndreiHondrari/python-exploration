@@ -1,4 +1,6 @@
-#!python
+#!python3
+
+# type: ignore
 
 from itertools import (
     count, dropwhile, groupby, filterfalse, islice, starmap, tee, takewhile,
@@ -50,13 +52,7 @@ for y in groupby([3, 3, 3, 2, 5, 5, 6, 6, 6, 8]):
         print("-> " + str(i))
 
 
-# ifilter is not in Python 3 because filter() provides this functionality now
-# print("### ifilter")
-# fi = ifilter(lambda x: x > 3, [1, 3, 4, 10, 1, 2, 8, 1, 4])
-# print(list(fi))
-
-print("### ifilterfalse")
-# fi = ifilterfalse(lambda x: x > 3, [1, 3, 4, 10, 1, 2, 8, 1, 4])
+print("### filterfalse")
 fi = filterfalse(lambda x: x > 3, [1, 3, 4, 10, 1, 2, 8, 1, 4])
 print(list(fi))
 
@@ -64,12 +60,11 @@ print("### islice")
 si = islice('ABCDEFGHIJKLMNOPQRSTUVXYZ', 2, 10, 3)
 print(list(si))
 
-print("### imap")
-# imp = imap(lambda x, y, z: x+y+z, (1,2,3, 4), (10,20,30), (100,200,300,400))
-imp = map(
+print("### map")
+mapped = map(
     lambda x, y, z: x+y+z, (1, 2, 3, 4), (10, 20, 30), (100, 200, 300, 400)
 )
-print(list(imp))
+print(list(mapped))
 
 print("### starmap")
 
@@ -93,16 +88,11 @@ te = tee([3, 4], 3)
 for z in te:
     print(list(z))
 
-print("### izip")
-# zi = izip([1,2,3], [10,20,30, 40], [333,444,555])
+print("### zip")
 zi = zip([1, 2, 3], [10, 20, 30, 40], [333, 444, 555])
 print(list(zi))
 
-print("### izip_longest")
-# zi = izip_longest(
-#     [1,2,3], [10,20,30, 40, 50, 60, 70], [333,444,555],
-#     fillvalue=9999999
-# )
+print("### zip_longest")
 zi = zip_longest(
     [1, 2, 3], [10, 20, 30, 40, 50, 60, 70], [333, 444, 555],
     fillvalue=9999999

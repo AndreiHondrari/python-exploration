@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 from typing import Iterator, Any
 from contextlib import contextmanager

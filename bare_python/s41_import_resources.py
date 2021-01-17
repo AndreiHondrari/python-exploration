@@ -1,3 +1,3 @@
-#!python
+#!python3
 
 # TODO: resources

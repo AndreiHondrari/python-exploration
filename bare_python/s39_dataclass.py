@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 from dataclasses import dataclass, field
 

@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 from ut import p
 from fractions import *

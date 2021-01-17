@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 from __future__ import annotations  # -> should work only in python 3.7
 

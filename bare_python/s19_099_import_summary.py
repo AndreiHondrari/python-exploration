@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 # import pack1
 __import__("pack1")

@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 a = (x for x in range(3))
 

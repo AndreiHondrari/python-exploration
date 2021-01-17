@@ -1,4 +1,6 @@
-#!python
+#!python3
+
+# type: ignore
 
 from __future__ import print_function
 
@@ -12,6 +14,8 @@ if python_version < 3:
 
 
 print("\nreturn something specific from __new__")
+
+
 class A:
 
     def __new__(cls):
@@ -19,16 +23,21 @@ class A:
         return 22
 
     def __init__(self):
-        print("A.__init__ called" ) # is actually never called
+        print("A.__init__ called")  # is actually never called
         # because 22.__init__ is called
 
     def __str__(self):
         return "THIS IS A"  # is actually never called
         # because 22.__str__ is called
 
-print(A())
+
+a: A = A()
+print(a)
+
 
 print("\nmimmic original __new__")
+
+
 class B:
 
     def __new__(cls):
@@ -41,9 +50,13 @@ class B:
     def __str__(self):
         return "THIS IS B"
 
+
 print(B())
 
+
 print("\nnot return anything from __new__")
+
+
 class C:
 
     def __new__(cls):
@@ -51,12 +64,14 @@ class C:
         pass  # do nothing
 
     def __init__(self):
-        print("C.__init__ called" ) # is actually never called
+        print("C.__init__ called")  # is actually never called
 
     def __str__(self):
         return "THIS IS C"  # is actually never called
 
+
 print(C())
+
 
 class Sample:
 
@@ -66,7 +81,10 @@ class Sample:
     def __str__(self):
         return "SAMPLE"
 
+
 print("\nreturn different class instance from __new__")
+
+
 class D:
 
     def __new__(cls):
@@ -74,21 +92,26 @@ class D:
         return Sample()
 
     def __init__(self):
-        print("D.__init__ called" ) # is actually never called
+        print("D.__init__ called")  # is actually never called
         # because Sample.__init__ gets called
 
     def __str__(self):
         return "THIS IS D"  # is actually never called
         # because Sample.__str__ gets called
 
+
 print(D())
 
+
 print("\nreturn from __init__")
+
+
 class E:
 
     def __init__(self):
-        print("E.__init__ called"  )
+        print("E.__init__ called")
         return 33  # TypeError: __init__ should return None
+
 
 try:
     print(E())

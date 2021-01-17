@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 from contextvars import ContextVar, Context
 from typing import Any, NoReturn, List
