@@ -1,4 +1,4 @@
-#!python
+#!python3
 """
 The formula for finding the biggest number by the number of bits is:
 
