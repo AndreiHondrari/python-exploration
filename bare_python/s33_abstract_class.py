@@ -1,5 +1,7 @@
 #!python3
 
+# type: ignore
+
 # abstract class
 
 from abc import ABCMeta, abstractmethod, ABC
@@ -55,7 +57,7 @@ except TypeError as e:
     print(f"raised: {repr(e)}")
 
 
-p("attempt instantiating ABC decendant with abstract "
+p("attempt instantiating ABC descendant with abstract "
   "AbstractBaseSecondary.some2 ...")
 try:
     ob3 = C()
