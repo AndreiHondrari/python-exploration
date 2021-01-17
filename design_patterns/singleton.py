@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 print("\nspecific class singleton definition")
 class MySingleton:

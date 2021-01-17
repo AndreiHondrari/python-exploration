@@ -1,4 +1,4 @@
-#!python
+#!python3
 
 class Base1:
     pass
