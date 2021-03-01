@@ -1,7 +1,7 @@
 #!python3
 
 from contextvars import ContextVar, Context
-from typing import Any, NoReturn, List
+from typing import Any, List
 
 import contextvars
 
@@ -9,7 +9,7 @@ name: ContextVar[Any] = ContextVar("name")
 contexts: List[Context] = list()
 
 
-def greet() -> NoReturn:
+def greet() -> None:
     print(f"Hello {name.get()}")
 
 
