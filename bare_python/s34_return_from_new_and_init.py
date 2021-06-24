@@ -23,12 +23,11 @@ class A:
         return 22
 
     def __init__(self):
-        print("A.__init__ called")  # is actually never called
-        # because 22.__init__ is called
+        print("A.__init__ called")  # is never called
+        # because there is no instance of this created
 
     def __str__(self):
-        return "THIS IS A"  # is actually never called
-        # because 22.__str__ is called
+        return "THIS IS A"  # is never called
 
 
 a: A = A()
@@ -64,10 +63,11 @@ class C:
         pass  # do nothing
 
     def __init__(self):
-        print("C.__init__ called")  # is actually never called
+        print("C.__init__ called")  # is never called
+        # because there is no instance of this created
 
     def __str__(self):
-        return "THIS IS C"  # is actually never called
+        return "THIS IS C"  # is never called
 
 
 print(C())
@@ -92,12 +92,11 @@ class D:
         return Sample()
 
     def __init__(self):
-        print("D.__init__ called")  # is actually never called
-        # because Sample.__init__ gets called
+        print("D.__init__ called")  # is never called
+        # because there is no instance of this created
 
     def __str__(self):
-        return "THIS IS D"  # is actually never called
-        # because Sample.__str__ gets called
+        return "THIS IS D"  # is never called
 
 
 print(D())
