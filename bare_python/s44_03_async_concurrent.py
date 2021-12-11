@@ -5,14 +5,14 @@ import asyncio
 async def do_something() -> int:
     print("Doing something time consuming ... (wait)")
     await asyncio.sleep(2)
-    print("do_something finished time constuming thing")
+    print("do_something finished time consuming thing")
     return random.randint(0, 100)
 
 
 async def do_something_else() -> int:
     print("Doing something >ELSE< time consuming ... (wait)")
     await asyncio.sleep(1)
-    print("do_something_else finished time constuming thing")
+    print("do_something_else finished time consuming thing")
     return random.randint(100, 1000)
 
 
