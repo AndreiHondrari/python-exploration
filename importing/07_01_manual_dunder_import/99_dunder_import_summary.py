@@ -1,9 +1,9 @@
-#!python3
 
 # import pack1
 __import__("pack1")
 
 # import pack1 --> only specific module available
+# more like import pack1.pmod2
 pkg = __import__("pack1.pmod2")
 pkg = __import__("pack1", fromlist=('pmod2',))  # similar
 # pkg.othermod will not work only pmod2
