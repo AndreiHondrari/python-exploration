@@ -1,6 +1,5 @@
 import time
 import socket
-import errno
 
 
 def main() -> None:

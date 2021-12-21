@@ -3,6 +3,7 @@ import errno
 
 
 def main() -> None:
+    print("Receiver start")
     receiver = socket.socket(
         socket.AF_INET,  # socket family
         socket.SOCK_STREAM,  # socket type
@@ -19,10 +20,18 @@ def main() -> None:
     try:
         receiver.recv(1024)
     except OSError as oerr:
-        print("Caught", str(oerr), errno.errorcode[oerr.errno])
+        print(
+            "Caught (intentionally)",
+            str(oerr),
+            errno.errorcode[oerr.errno]
+        )
 
     # the socket created with the accept method is the way to communicate
     msg = sender_conn.recv(1024)
+
+    if sender_conn.fileno() > 0:
+        sender_conn.close()
+    receiver.close()
 
     print("RECV", msg)
 

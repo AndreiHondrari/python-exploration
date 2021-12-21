@@ -2,6 +2,7 @@ import socket
 
 
 def main() -> None:
+    print("Sender start")
     sender = socket.socket(
         socket.AF_INET,  # socket family
         socket.SOCK_STREAM,  # socket type
@@ -14,6 +15,7 @@ def main() -> None:
     print("sending ...")
     sender.send(b"hello other node!")
 
+    sender.close()
     print("DONE")
 
 

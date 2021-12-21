@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+
+  # MACHINE A
+  machine_a:
+    image: i_s08_eth_raw_socket
+
+    volumes:
+      - type: bind
+        source: ./workdir/
+        target: /workdir
+
+    hostname: machine_a
+    mac_address: "02:42:ac:10:00:07"
+
+    networks:
+      osi_l2_app_net:
+        ipv4_address: "172.16.0.2"
+
+  # MACHINE B
+  machine_b:
+    image: i_s08_eth_raw_socket
+
+    volumes:
+      - type: bind
+        source: ./workdir/
+        target: /workdir
+
+    hostname: machine_b
+    mac_address: "02:42:ac:10:00:09"
+
+    networks:
+      osi_l2_app_net:
+        ipv4_address: "172.16.0.3"
+
+
+networks:
+  osi_l2_app_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.0.1/24"
