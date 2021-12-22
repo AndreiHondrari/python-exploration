@@ -14,9 +14,9 @@ Attempt to send a binary message from one machine to another using nothing else 
 2. Run `docker compose up -d`
 3. Open two terminals
   * in first terminal run `docker compose exec machine_a /bin/zsh`
-  * in second termina run `docker compose exec machine_b /bin/zsh`
+  * in second terminal run `docker compose exec machine_b /bin/zsh`
 
 ## How to use
 
 1. In **machine_b** run `python -B process_b.py`. This will start the receiver and will wait for Ethernet frames.
-2. In **machine_b** run `python -B process_a.py`. This will send one Ethernet frame to **machine_a**.
+2. In **machine_a** run `python -B process_a.py`. This will send one Ethernet frame to **machine_b**.
