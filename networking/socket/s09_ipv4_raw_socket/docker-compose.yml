@@ -34,6 +34,22 @@ services:
       osi_l3_app_net:
         ipv4_address: "172.16.0.3"
 
+  # MACHINE C
+  machine_c:
+    image: i_s09_ipv4_raw_socket
+
+    volumes:
+      - type: bind
+        source: ./workdir/
+        target: /workdir
+
+    hostname: machine_c
+    mac_address: "02:42:ac:10:00:13"
+
+    networks:
+      osi_l3_app_net:
+        ipv4_address: "172.16.0.4"
+
 
 networks:
   osi_l3_app_net:

@@ -7,7 +7,6 @@ import socket
 import random
 
 import ethernet_constants as ethc
-from mac_utils import mac_string_to_bytes as mac_convert
 
 import ethernet as eth
 
@@ -23,7 +22,9 @@ def main() -> None:
     with open('lipsum.txt', 'r') as lipsum_pf:
         lipsum = "".join(lipsum_pf.readlines())
 
-    message = "".join(random.sample(lipsum, 50))
+    AMOUNT = 100
+    offset = random.randint(0, len(lipsum) - AMOUNT)
+    message = lipsum[offset:offset+AMOUNT+1]
     print(f"MSG TO SEND: {message[:50]} ...\n")
 
     # make sure to encode the message (convert to bytes)

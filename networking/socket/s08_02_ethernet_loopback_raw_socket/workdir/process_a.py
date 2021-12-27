@@ -2,7 +2,6 @@
 Machine A
 """
 
-import uuid
 import socket
 import random
 
@@ -20,7 +19,9 @@ def main() -> None:
     with open('lipsum.txt', 'r') as lipsum_pf:
         lipsum = "".join(lipsum_pf.readlines())
 
-    message = "".join(random.sample(lipsum, 50))
+    AMOUNT = 100
+    offset = random.randint(0, len(lipsum) - AMOUNT)
+    message = lipsum[offset:offset+AMOUNT+1]
     print(f"MSG TO SEND: {message[:50]} ...\n")
 
     # make sure to encode the message (convert to bytes)
