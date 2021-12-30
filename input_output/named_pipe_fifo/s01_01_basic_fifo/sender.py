@@ -30,6 +30,8 @@ def main() -> None:
         except KeyboardInterrupt:
             print("\nCtrl+C detected !")
 
+        os.close(fifo_file)
+
     except FileNotFoundError as fnferr:
         print("FIFO is missing:", repr(fnferr))
 

@@ -40,7 +40,7 @@ def main() -> None:
         fifo_file = open(fifo_path, "w")
 
         try:
-            hprint("start receiving ...")
+            hprint("start sending ...")
             while True:
                 msg = str(random.randint(1000, 10_000))
                 msg = f"[{UID}] {msg}"
