@@ -45,7 +45,6 @@ def main() -> None:
         # shared memory close
         print("Closing shared memory ...")
         resource_tracker.unregister(some_shm._name, 'shared_memory')
-        # some_shm.buf.release()
         some_shm.close()
 
     except FileNotFoundError as fnf_err:
