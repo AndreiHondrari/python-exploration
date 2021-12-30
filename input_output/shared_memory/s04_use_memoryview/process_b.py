@@ -12,9 +12,10 @@ hprint = functools.partial(print, "\n#")
 
 def main() -> None:
     print("PROCESS B - START")
-    some_shm: shmem.SharedMemory
+    NO_OF_BYTES = 10
+    MID = NO_OF_BYTES // 2
 
-    COUNT = 10
+    some_shm: shmem.SharedMemory
 
     try:
         while True:
@@ -26,18 +27,29 @@ def main() -> None:
                 print(repr(fnf_err))
                 break
 
-            vals_bytes = bytearray()
+            # declare memory views
+            section_1 = some_shm.buf[0:MID]
+            section_2 = some_shm.buf[MID:NO_OF_BYTES]
+
+            section_1_vals_bytes = bytearray()
+            section_2_vals_bytes = bytearray()
 
             # bytes acquisition
-            for i in range(COUNT):
-                vals_bytes.append(some_shm.buf[i])
+            for i in range(MID):
+                section_1_vals_bytes.append(section_1[i])
+                section_2_vals_bytes.append(section_2[i])
 
-            print("bytes:", vals_bytes)
+            print("S1 bytes:", section_1_vals_bytes)
+            print("S2 bytes:", section_2_vals_bytes)
 
             # values decoding
-            vals = list(vals_bytes)
-            print("vals :", vals)
+            section_1_vals = list(section_1_vals_bytes)
+            section_2_vals = list(section_2_vals_bytes)
+            print("S1 vals :", section_1_vals)
+            print("S2 vals :", section_2_vals)
 
+            section_1.release()
+            section_2.release()
             resource_tracker.unregister(some_shm._name, 'shared_memory')
             some_shm.close()
 
