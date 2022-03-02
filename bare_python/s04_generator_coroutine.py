@@ -2,15 +2,15 @@
 
 import time
 
-from typing import Coroutine
+from typing import Generator
 
 from ut import p
 
 
-def handle(n: int) -> Coroutine:
+def handle(n: int) -> Generator[None, int, None]:
 
     while True:
-        x = yield
+        x: int = yield
         print(f"COROUTINED: {n * x}")
 
 
@@ -37,10 +37,10 @@ except StopIteration as e:
 p("define a coroutine with delays")
 
 
-def dosome(delay: float, name: str) -> Coroutine:
+def dosome(delay: float, name: str) -> Generator[None, int, None]:
     while True:
-        x = yield
-        for i in range(x):  # type: ignore
+        x: int = yield
+        for i in range(x):
             time.sleep(delay)
             print(f"[{name}]: {i}")
 
