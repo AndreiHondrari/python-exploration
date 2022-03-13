@@ -1,7 +1,6 @@
-import time
 import socket
 
-from typing import Tuple
+from typing import Tuple, Optional
 
 
 def main() -> None:
@@ -17,11 +16,12 @@ def main() -> None:
     print("blocking receiver?", receiver.getblocking())
     receiver.listen()
 
+    sender_conn: Optional[socket.socket] = None
+
     try:
         # wait for a connection
         while True:
             print("wait for accept ...")
-            sender_conn: socket.socket
             addr: Tuple[str, int]
             (sender_conn, addr,) = receiver.accept()
             print(f"accepted! ({addr})")
@@ -41,11 +41,13 @@ def main() -> None:
 
     except KeyboardInterrupt:
         print("\nCtrl+C detected")
+
     finally:
         print("Cleaning ...")
-        if sender_conn.fileno() > 0:
+        if sender_conn is not None and sender_conn.fileno() > 0:
             print("Sender socket was still open. Closing ...")
             sender_conn.close()
+
         receiver.close()
 
     print("RECEIVER STOP")
