@@ -1,1 +1,1 @@
-Must run `main.py` with `python -m root.main` from above `root`.
+Must run `main.py` with `python -B -m root.main` from above `root`.
