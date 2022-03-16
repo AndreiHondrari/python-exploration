@@ -20,7 +20,7 @@ def main() -> None:
             msg = f"{random.randint(1000, 10_000)}"
             print(f"SEND {msg}")
             sender.send(msg.encode())
-            time.sleep(random.random() * 2)
+            time.sleep(random.random() * 0.2)
     except KeyboardInterrupt:
         print("\nCtrl+C detected")
     finally:

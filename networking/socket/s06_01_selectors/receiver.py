@@ -1,5 +1,6 @@
 import socket
 import selectors
+import time
 
 from typing import Tuple, List
 
@@ -29,11 +30,14 @@ def main() -> None:
             (sender_conn, addr,) = receiver.accept()
             print(f"accepted! ({addr})")
 
+            sender_conn.setblocking(False)
+
             print("register for select ...")
             default_selector.register(sender_conn, selectors.EVENT_READ)
 
             # get messages from the connection
-            while True:
+            is_running = True
+            while is_running:
                 # --- IMPORTANT BIT ----
 
                 print("Select ...")
@@ -44,16 +48,19 @@ def main() -> None:
                     if event_pairs[i][1] & selectors.EVENT_READ:
                         print("Read event")
 
-                msg = sender_conn.recv(1024)
-                print("RECV", msg)
+                        msg = sender_conn.recv(1024)
+                        print("RECV", msg)
 
-                # if there are 0 bytes received
-                # then the remote socket closed
-                if len(msg) == 0:
-                    print("Client closed. Cleaning ...")
-                    default_selector.unregister(sender_conn)
-                    sender_conn.close()
-                    break
+                        # if there are 0 bytes received
+                        # then the remote socket closed
+                        if len(msg) == 0:
+                            print("Client closed. Cleaning ...")
+                            default_selector.unregister(sender_conn)
+                            sender_conn.close()
+                            is_running = False
+                            break
+
+                time.sleep(0.5)  # artificial delay
 
     except KeyboardInterrupt:
         print("\nCtrl+C detected")
