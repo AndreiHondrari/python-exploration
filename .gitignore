@@ -4,3 +4,5 @@ __pycache__
 *.sqlite3
 *.db
 .DS_Store
+*.log
+*.log.[0-9]*
