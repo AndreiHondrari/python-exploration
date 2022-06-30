@@ -39,6 +39,7 @@ def main() -> None:
     hprint("Log some stuff")
     gandalf_kek.info("lipsum")
     gandalf_kek_foo.warning("dolores")
+    gandalf_lol.critical("dolores")
     jimmy.fatal("consectetur")
 
     hprint("Display all loggers")

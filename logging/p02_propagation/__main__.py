@@ -6,12 +6,28 @@ and then pass it to the parent for further handling by it.
 """
 import logging
 import sys
+import os
 from functools import partial
 
 hprint = partial(print, "\n#")
 
 
 def main() -> None:
+
+    try:
+        os.unlink('root.log')
+    except FileNotFoundError:
+        print("root.log does not exists")
+
+    try:
+        os.unlink('gandalf.log')
+    except FileNotFoundError:
+        print("gandalf.log does not exists")
+
+    try:
+        os.unlink('kek.log')
+    except FileNotFoundError:
+        print("kek.log does not exists")
 
     stream_handler = logging.StreamHandler(sys.stdout)
     root_log_fh = logging.FileHandler("root.log")
