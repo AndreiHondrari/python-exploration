@@ -1,9 +1,5 @@
 """
-In this example we attempt at disabling logging under (including)
-a certain log level and then re-enabling it.
-
-Disabling -> logging.disable(target log level)
-Re-enabling -> logging.disable(logging.NOTSET)
+In this example we obtain a custom logger
 """
 
 import sys
