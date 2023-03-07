@@ -35,16 +35,16 @@ def create_accumulator() -> Generator[int, int, None]:
 
 def main() -> None:
 
-    evens_producer = create_evens_producer()
+    events_producer = create_evens_producer()
     accumulator = create_accumulator()
 
     next(accumulator)
 
     for i in range(10):
-        even = next(evens_producer)
+        even = next(events_producer)
         accumulator.send(even)
 
-    evens_producer.close()
+    events_producer.close()
 
     final: int = accumulator.throw(StopAccumulator)
     print("final total:", final)
