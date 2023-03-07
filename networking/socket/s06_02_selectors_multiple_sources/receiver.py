@@ -1,3 +1,20 @@
+"""
+Receiver - multiplexes fixed number of multiple clients
+
+Steps:
+- waits for multiple (fixed number) clients to connect
+- registers each client socket to selector
+- starts multiplexing for the sockets
+- handles read events off the sockets as they come
+
+Features:
+- must wait for all clients to connect beforehand
+- can handle all of the client sockets
+- can not connect to additional clients while reading from connected ones
+
+
+"""
+
 import socket
 import selectors
 import time

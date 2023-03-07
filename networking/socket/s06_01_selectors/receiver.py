@@ -1,3 +1,15 @@
+"""
+Receiver
+
+Steps:
+- Waits for a connection
+- Registers a selector for the remote socket after accept
+- Waits for messages from the remote socket
+
+Features:
+- Will not handle any other clients until current one finishes
+"""
+
 import socket
 import selectors
 import time

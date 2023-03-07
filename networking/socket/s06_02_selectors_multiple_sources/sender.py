@@ -1,3 +1,8 @@
+"""
+Simple sender.
+Just sends numbers to receiver.
+"""
+
 import time
 import random
 import socket
