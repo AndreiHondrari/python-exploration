@@ -1,5 +1,17 @@
 #!python3
 
+"""
+Execution:
+- coroutine is created
+- main calls next on coroutine, execution is passed to the coroutine
+- executing it up to first yield, execution is passed back to main,
+  to where it was left
+- main calls send on coroutine
+- yield receives the value sent by main and passes it to the left hand operand
+
+Coroutine will continue to ingest values via send until it is closed.
+"""
+
 import time
 
 from typing import Generator
