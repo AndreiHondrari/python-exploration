@@ -1,5 +1,7 @@
 """
 Control steps of the execution using yield
+
+NOTICE YOU CAN'T GET THE RETURNED VALUE
 """
 
 from typing import Generator
@@ -7,22 +9,21 @@ from typing import Generator
 
 def do_bla() -> Generator[None, None, None]:
     print("111")
-    yield
+    yield "qqq"
     print("222")
-    yield
+    yield "ppp"
     print("333")
 
 
 def main() -> None:
+    # create coroutine object
     bla = do_bla()
 
-    bla.send(None)  # 111
-    bla.send(None)  # 222
+    # interact with coroutine
+    for x in bla:
+        print("step", x)
 
-    try:
-        bla.send(None)  # 333
-    except StopIteration:
-        pass
+    # NOTICE YOU CAN'T GET THE RETURNED VALUE !!!
 
 
 if __name__ == "__main__":

@@ -1,29 +1,26 @@
-"""
-
-"""
 
 
-def produce():
-    for i in range(3):
-        print(f"foo {i}")
-        yield i
+VALUES = [1, 3, 5]
 
 
-def consume(other):
-    yield from other
+def producer(target):
+    target.send(None)
+
+    for val in VALUES:
+        target.send(val)
+
+    target.close()
+
+
+def consumer():
+    while True:
+        value = yield
+        print("value", value)
 
 
 def main() -> None:
-    foo = produce()
-    bar = consume(foo)
-
-    # execution loop
-    while True:
-        try:
-            bar.send(None)
-        except StopIteration:
-            print("DONE")
-            break
+    c1 = consumer()
+    producer(c1)
 
 
 if __name__ == "__main__":

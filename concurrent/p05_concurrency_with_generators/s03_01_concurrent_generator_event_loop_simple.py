@@ -3,9 +3,11 @@ Concurrency with generators
 
 Let's say we would like to run
 111 do foo part 1
-222 do bar part 1
-AAA do foo part 2
+AAA do bar part 1
+222 do foo part 2
 BBB do bar part 2
+333 do foo part 3
+CCC do bar part 3
 
 Run parts of the tasks until they are done.
 """
@@ -15,14 +17,22 @@ from collections import deque
 
 def do_foo():
     print("111")
-    yield
-    print("AAA")
+    yield 444
+    print("222")
+    yield 555
+    print("333")
+
+    return 7777
 
 
 def do_bar():
-    print("222")
-    yield
+    print("AAA")
+    yield "DDD"
     print("BBB")
+    yield "EEE"
+    print("CCC")
+
+    return 9999
 
 
 def main() -> None:
@@ -40,8 +50,10 @@ def main() -> None:
         task = tasks.popleft()
 
         try:
-            next(task)
-        except StopIteration:
+            x = next(task)
+            print("step", x)
+        except StopIteration as stop_iteration_err:
+            print("result", stop_iteration_err.value)
             continue  # skip re-adding the task to queue
 
         tasks.append(task)

@@ -1,15 +1,5 @@
 """
-Concurrency with generators
 
-Let's say we would like to run
-111 do foo part 1
-AAA do bar part 1
-222 do foo part 2
-BBB do bar part 2
-333 do foo part 3
-CCC do bar part 3
-
-Run parts of the tasks until they are done.
 """
 
 from collections import deque
@@ -61,17 +51,22 @@ def do_bar():
     return 9999
 
 
+def async_main():
+    p1 = do_foo()
+    p2 = do_bar()
+
+    print("\ndo_foo\n", '-' * 10, sep='')
+    yield from p1  # delegate to do_foo
+
+    print("\ndo_bar\n", '-' * 10, sep='')
+    yield from p2  # delegate to do_bar
+
+    print()
+
+
 def main() -> None:
-    # declare some tasks
-    foo = do_foo()
-    bar = do_bar()
-
-    loop.call_soon(foo)
-    loop.call_soon(bar)
-
+    loop.call_soon(async_main())
     loop.run()
-
-    print("\nDONE")
 
 
 if __name__ == "__main__":
