@@ -15,6 +15,7 @@ def main(stdscr):
     while True:
         pass
 
+
 scr = curses.initscr()
 try:
     # start curses app
@@ -30,7 +31,7 @@ try:
     curses.echo()
     curses.endwin()
 
-except:
+except Exception:
     # close curses app
     scr.keypad(0)
     curses.nocbreak()
