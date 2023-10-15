@@ -15,6 +15,7 @@ class MyThread(threading.Thread):
             print(self.name + " " + str(i))
             time.sleep(self.delay)
 
+
 t1 = MyThread("T1", 0.3)
 t2 = MyThread("T2", 0.2)
 
