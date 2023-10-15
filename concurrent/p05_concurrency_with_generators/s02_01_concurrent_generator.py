@@ -27,23 +27,18 @@ def main() -> None:
     foo = do_foo()
     bar = do_bar()
 
-    # foo part 1
-    next(foo)
+    next(foo)  # foo part 1
+    next(bar)  # bar part 1
 
-    # bar part 1
-    next(bar)
-
-    # foo part 2
     try:
-        next(foo)
+        next(foo)  # foo part 2
     except StopIteration:
-        pass
+        print(" ...and stop")
 
-    # bar part 2
     try:
-        next(bar)
+        next(bar)  # bar part 2
     except StopIteration:
-        pass
+        print(" ...and stop")
 
 
 if __name__ == "__main__":
